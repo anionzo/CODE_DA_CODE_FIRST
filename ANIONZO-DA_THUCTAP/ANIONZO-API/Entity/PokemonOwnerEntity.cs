@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ANIONZO_API.Models
+namespace ANIONZO_API.Entity
 {
     public class PokemonOwnerEntity : GuidKeyEntity
     {

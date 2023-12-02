@@ -1,4 +1,4 @@
-﻿using ANIONZO_API.Models;
+﻿using ANIONZO_API.Entity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 

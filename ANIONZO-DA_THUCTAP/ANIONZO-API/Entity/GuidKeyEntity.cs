@@ -1,7 +1,7 @@
 ﻿using ANIONZO_API.Utils;
 using System.ComponentModel.DataAnnotations;
 
-namespace ANIONZO_API.Models
+namespace ANIONZO_API.Entity
 {
     public class GuidKeyEntity
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Principal;
 
-namespace ANIONZO_API.Models
+namespace ANIONZO_API.Entity
 {
     public class OwnerEntity :GuidKeyEntity
     {
