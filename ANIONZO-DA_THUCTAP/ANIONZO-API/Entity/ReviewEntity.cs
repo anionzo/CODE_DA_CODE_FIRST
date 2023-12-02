@@ -5,7 +5,8 @@ namespace ANIONZO_API.Entity
     public class ReviewEntity : GuidKeyEntity
     {
         public string? Title { get; set; }
-        public string? Content { get; set; }
+        public string? Text { get; set; }
+        public int Rating { get; set; }
         [ForeignKey("Reviewer")]
         public string? ReviewerID;
         public ReviewerEntity? Reviewer { get; set; }
