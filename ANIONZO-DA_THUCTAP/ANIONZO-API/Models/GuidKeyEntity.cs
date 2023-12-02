@@ -13,7 +13,6 @@ namespace ANIONZO_API.Models
 
         [Key]
         public string Id { get; set; }
-        public string KeyId { get; set; }
         public string? CreatedBy { get; set; }
         public string? LastUpdatedBy { get; set; }
         public string? DeletedBy { get; set; }

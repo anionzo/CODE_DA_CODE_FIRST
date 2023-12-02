@@ -7,8 +7,8 @@ namespace ANIONZO_API.Models
         public string? PokemonId { get; set; }
         [ForeignKey("Pokemon")]
         public PokemonEntity? Pokemon { get; set; }
-        [ForeignKey("Category")]
 
+        [ForeignKey("Category")]
         public string? CategoryId { get; set; }
         public CategoryEntity? Category { get; set; }
     }
