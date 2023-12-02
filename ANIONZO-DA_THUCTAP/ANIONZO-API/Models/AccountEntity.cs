@@ -2,7 +2,7 @@
 {
     public class AccountEntity : GuidKeyEntity
     {
-        public string Username { get; set; }
-        public string PasswordHash { get; set; }
+        public string? Username { get; set; }
+        public string? PasswordHash { get; set; }
     }
 }

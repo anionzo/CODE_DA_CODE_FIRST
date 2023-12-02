@@ -29,7 +29,6 @@ namespace ANIONZO_API.Utils
         {
             return TZConvert.GetTimeZoneInfo(timeZoneId);
         }
-
         public static Microsoft.AspNetCore.Http.HttpContext? Current => _contextAccessor?.HttpContext;
     }
 }

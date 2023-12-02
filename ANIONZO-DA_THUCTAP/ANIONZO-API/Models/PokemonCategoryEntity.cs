@@ -4,12 +4,12 @@ namespace ANIONZO_API.Models
 {
     public class PokemonCategoryEntity : GuidKeyEntity
     {
-        public string PokemonId { get; set; }
+        public string? PokemonId { get; set; }
         [ForeignKey("Pokemon")]
-        public PokemonEntity Pokemon { get; set; }
+        public PokemonEntity? Pokemon { get; set; }
         [ForeignKey("Category")]
 
-        public string CategoryId { get; set; }
-        public CategoryEntity Category { get; set; }
+        public string? CategoryId { get; set; }
+        public CategoryEntity? Category { get; set; }
     }
 }
