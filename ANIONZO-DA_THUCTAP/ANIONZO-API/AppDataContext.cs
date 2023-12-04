@@ -10,6 +10,7 @@ namespace ANIONZO_API
         // dotnet ef migrations add Update1 -v --context AppDataContext
         // dotnet ef database update -v --context AppDataContext
         // dotnet ef migrations remove
+        //
         public AppDataContext(DbContextOptions<AppDataContext> options) : base(options)
         {
         }
@@ -27,7 +28,7 @@ namespace ANIONZO_API
         public DbSet<CategoryEntity> Categorys { get; set; }
         public DbSet<CountryEntity> Countries { get; set; }
         public DbSet<OwnerEntity> Owners { get; set; }
-        public DbSet<PokemonEntity> Pokemons { get; set; }
+        public DbSet<PokemonEntity> Pokemon { get; set; }
         public DbSet<PokemonOwnerEntity> PokemonOwners { get; set; }
         public DbSet<PokemonCategoryEntity> PokemonCategories { get; set; }
         public DbSet<ReviewerEntity> Reviewers { get; set; }

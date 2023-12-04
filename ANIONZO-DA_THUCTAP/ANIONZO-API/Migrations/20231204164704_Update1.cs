@@ -16,9 +16,6 @@ namespace ANIONZO_API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -35,9 +32,6 @@ namespace ANIONZO_API.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -54,9 +48,6 @@ namespace ANIONZO_API.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -68,15 +59,12 @@ namespace ANIONZO_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pokemons",
+                name: "Pokemon",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -84,7 +72,7 @@ namespace ANIONZO_API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pokemons", x => x.Id);
+                    table.PrimaryKey("PK_Pokemon", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,9 +82,6 @@ namespace ANIONZO_API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -112,14 +97,11 @@ namespace ANIONZO_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gym = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     AccountID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CountryEntityId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -134,13 +116,8 @@ namespace ANIONZO_API.Migrations
                         principalTable: "Accounts",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Owners_Categorys_CategoryID",
+                        name: "FK_Owners_Countries_CategoryID",
                         column: x => x.CategoryID,
-                        principalTable: "Categorys",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Owners_Countries_CountryEntityId",
-                        column: x => x.CountryEntityId,
                         principalTable: "Countries",
                         principalColumn: "Id");
                 });
@@ -152,9 +129,6 @@ namespace ANIONZO_API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PokemonId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -169,9 +143,9 @@ namespace ANIONZO_API.Migrations
                         principalTable: "Categorys",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_PokemonCategories_Pokemons_PokemonId",
+                        name: "FK_PokemonCategories_Pokemon_PokemonId",
                         column: x => x.PokemonId,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id");
                 });
 
@@ -181,12 +155,10 @@ namespace ANIONZO_API.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rating = table.Column<int>(type: "int", nullable: false),
                     ReviewerID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PokemonID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -196,9 +168,9 @@ namespace ANIONZO_API.Migrations
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Pokemons_PokemonID",
+                        name: "FK_Reviews_Pokemon_PokemonID",
                         column: x => x.PokemonID,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reviews_Reviewers_ReviewerID",
@@ -214,9 +186,6 @@ namespace ANIONZO_API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PokemonId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -231,9 +200,9 @@ namespace ANIONZO_API.Migrations
                         principalTable: "Owners",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_PokemonOwners_Pokemons_PokemonId",
+                        name: "FK_PokemonOwners_Pokemon_PokemonId",
                         column: x => x.PokemonId,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id");
                 });
 
@@ -246,11 +215,6 @@ namespace ANIONZO_API.Migrations
                 name: "IX_Owners_CategoryID",
                 table: "Owners",
                 column: "CategoryID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Owners_CountryEntityId",
-                table: "Owners",
-                column: "CountryEntityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PokemonCategories_CategoryId",
@@ -295,19 +259,19 @@ namespace ANIONZO_API.Migrations
                 name: "Reviews");
 
             migrationBuilder.DropTable(
+                name: "Categorys");
+
+            migrationBuilder.DropTable(
                 name: "Owners");
 
             migrationBuilder.DropTable(
-                name: "Pokemons");
+                name: "Pokemon");
 
             migrationBuilder.DropTable(
                 name: "Reviewers");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
-
-            migrationBuilder.DropTable(
-                name: "Categorys");
 
             migrationBuilder.DropTable(
                 name: "Countries");
