@@ -1,9 +1,11 @@
 using ANIONZO_API;
+using ANIONZO_API.Constants;
 using ANIONZO_API.Repository;
 using ANIONZO_API.Repository.InterfaceRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddTransient<Seed>();
+//builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,6 +24,7 @@ builder.Services.AddDbContext<AppDataContext>();
 
 //-----------
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
+
 
 
 var app = builder.Build();

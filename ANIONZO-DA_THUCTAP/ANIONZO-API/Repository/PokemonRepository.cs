@@ -6,8 +6,7 @@ namespace ANIONZO_API.Repository
 {
     public class PokemonRepository : IPokemonRepository
     {
-        private readonly AppDataContext _context;
-
+        private readonly AppDataContext? _context = null;
         public PokemonRepository(AppDataContext context) {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -49,9 +48,9 @@ namespace ANIONZO_API.Repository
             return _context.Pokemon.OrderBy(p => p.Id).ToList();
         }
 
-        public PokemonEntity GetID(string id)
+        public PokemonEntity GetID(string Id)
         {
-            return _context.Pokemon.FirstOrDefault(p => p.Id.Equals(id));
+            return _context.Pokemon.FirstOrDefault(p => p.Id.Equals(Id));
         }
 
         public PokemonEntity GetName(string name)
@@ -68,24 +67,45 @@ namespace ANIONZO_API.Repository
 
         public decimal GetRatings(string idPokemon)
         {
-            var revew = _context.Reviews.Where(p => p.Id.Equals(idPokemon));
-            if(revew.Count() <= 0) return 0;
-            return ((decimal)revew.Sum(r => r.Rating) / revew.Count());
+            var review = _context.Reviews.Where(p => p.Pokemon.Id == idPokemon).ToList();
+
+            if(review.Sum(r => r.Rating) != 0)
+                return ((decimal)review.Sum(r => r.Rating) / review.Count());
+            return 0;
         }
 
-        public bool GetTExists(string id)
+        public bool GetTExists(string Id)
         {
-            return _context.Pokemon.Any(p => p.Id.Equals(id));
+            return _context.Pokemon.Any(p => string.Equals(p.Id, Id));
         }
-
         public bool Save()
         {
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
-
         public bool UpdatePokemon(string ownerId, string categoryId, PokemonEntity pokemon)
         {
+
+            if (ownerId == null)
+                return false;
+            else
+            {
+                var owner = _context.Owners.Where(a => a.Id.Equals(ownerId)).FirstOrDefault();
+
+                var pokemonOwner = _context.PokemonOwners.Where(a => a.PokemonId == pokemon.Id).FirstOrDefault();
+                pokemonOwner.OwnerId = owner.Id;
+                _context.Update(pokemonOwner);
+            }
+            if (categoryId == null)
+                return false;
+            else
+            {
+                var category = _context.Categorys.Where(a => a.Id.Equals(categoryId)).FirstOrDefault();
+                var pokemonCategory = _context.PokemonCategories.Where(a => a.PokemonId == pokemon.Id).FirstOrDefault();
+                pokemonCategory.CategoryId = category.Id;
+
+                _context.Update(pokemonCategory);
+            }
             _context.Update(pokemon);
             return Save();
         }
