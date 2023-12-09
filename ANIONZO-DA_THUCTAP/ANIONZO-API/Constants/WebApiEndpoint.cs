@@ -13,5 +13,14 @@
             public const string UpdatePokemon = BaseEndpoint + "/update" + "/{Id}";
             public const string DeletePokemon = BaseEndpoint + "/delete" + "/{Id}";
         }
+        public static class Category
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/category";
+            public const string GetCategory = BaseEndpoint + "/get-single" + "/{Id}";
+            public const string GetAllCategory = BaseEndpoint + "/get-all";
+            public const string AddCategory = BaseEndpoint + "/add";
+            public const string UpdateCategory = BaseEndpoint + "/update" + "/{Id}";
+            public const string DeleteCategory = BaseEndpoint + "/delete" + "/{Id}";
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace ANIONZO_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PokemonController : Controller
+    public class PokemonController : ControllerBase
     {
         private readonly IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
