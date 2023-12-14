@@ -1,0 +1,1 @@
+select DISTINCT chuyennganh  from Sheet1$ 
