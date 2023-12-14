@@ -69,6 +69,7 @@ namespace ANIONZO_API.Controllers
                 return BadRequest(ModelState);
 
             var categoryMap = _mapper.Map<CategoryEntity>(categoryCreate);
+            categoryMap.Id = Guid.NewGuid().ToString();
 
             if (!_categoryRepository.Create(categoryMap))
             {
