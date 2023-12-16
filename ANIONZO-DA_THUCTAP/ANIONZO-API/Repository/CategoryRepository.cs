@@ -22,12 +22,12 @@ namespace ANIONZO_API.Repository
 
         public bool Delete(CategoryEntity category)
         {
-            var ca = Get(category.Id);
+            //var ca = Get(category.Id);
 
-            ca.DeletedTime = ApiHelper.SystemTimeNow;
-            _context.Update(ca);
+            //ca.DeletedTime = ApiHelper.SystemTimeNow;
+            //_context.Update(ca);
 
-            //_context.Remove(category);
+            _context.Remove(category);
             return Save();
             
         }
