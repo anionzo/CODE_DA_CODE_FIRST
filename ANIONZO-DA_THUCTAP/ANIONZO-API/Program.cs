@@ -25,6 +25,7 @@ builder.Services.AddDbContext<AppDataContext>();
 //-----------
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 
 
 

@@ -112,7 +112,7 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         [Route(WebApiEndpoint.Category.DeleteCategory)]
@@ -133,7 +133,7 @@ namespace ANIONZO_API.Controllers
                 ModelState.AddModelError("", "Lỗi trong việc xóa category");
             }
 
-            return NoContent();
+            return Ok("Xóa thành công");
         }
 
     }

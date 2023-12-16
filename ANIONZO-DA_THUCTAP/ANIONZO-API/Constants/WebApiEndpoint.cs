@@ -22,5 +22,14 @@
             public const string UpdateCategory = BaseEndpoint + "/update" + "/{Id}";
             public const string DeleteCategory = BaseEndpoint + "/delete" + "/{Id}";
         }
+        public static class Owner
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/owner";
+            public const string GetOwner = BaseEndpoint + "/get-single" + "/{Id}";
+            public const string GetAllOwner = BaseEndpoint + "/get-all";
+            public const string AddOwner = BaseEndpoint + "/add";
+            public const string UpdateOwner = BaseEndpoint + "/update" + "/{Id}";
+            public const string DeleteOwner = BaseEndpoint + "/delete" + "/{Id}";
+        }
     }
 }
