@@ -15,4 +15,3 @@ namespace ANIONZO_API.Repository.InterfaceRepository
         bool Save();
     }
 }
-}
