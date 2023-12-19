@@ -30,6 +30,34 @@
             public const string AddOwner = BaseEndpoint + "/add";
             public const string UpdateOwner = BaseEndpoint + "/update" + "/{Id}";
             public const string DeleteOwner = BaseEndpoint + "/delete" + "/{Id}";
+            public const string GetPokemonByOwner = BaseEndpoint + "/{ownerId}/pokemon";
         }
+
+        public static class Country
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/country";
+            public const string GetCountry = BaseEndpoint + "/get-single" + "/{countryId}";
+            public const string GetAllCountry = BaseEndpoint + "/get-all";
+            public const string AddCountry = BaseEndpoint + "/add";
+            public const string UpdateCountry = BaseEndpoint + "/update" + "/{countryId}";
+            public const string DeleteCountry = BaseEndpoint + "/delete" + "/{countryId}";
+            public const string GetCountryOfAnOwner = BaseEndpoint + "/owners" + "/{ownerId}";
+        }
+
+        public static class Review
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/review";
+            public const string GetReview = BaseEndpoint + "/get-single" + "/{reviewId}";
+            public const string GetAllReview = BaseEndpoint + "/get-all";
+            public const string AddReview = BaseEndpoint + "/add";
+            public const string UpdateReview = BaseEndpoint + "/update" + "/{reviewId}";
+            public const string DeleteReview = BaseEndpoint + "/delete" + "/{reviewId}";
+            public const string DeleteReviewsByReviewer = BaseEndpoint + "/DeleteReviewsByReviewer" + "/{reviewerId}";
+            public const string GetReviewsForAPokemon = BaseEndpoint + "pokemon " + "/{pokeId}";
+            public const string GetPokemon = BaseEndpoint + "/get-single-pokemon" + "/{reviewId}";
+
+
+        }
+
     }
 }
