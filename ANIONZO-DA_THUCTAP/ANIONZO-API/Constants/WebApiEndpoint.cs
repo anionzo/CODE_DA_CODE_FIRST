@@ -58,6 +58,16 @@
 
 
         }
+        public static class Reviewer
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/reviewer";
+            public const string GetReviewer = BaseEndpoint + "/get-single" + "/{reviewerId}";
+            public const string GetAllReviewer = BaseEndpoint + "/get-all";
+            public const string AddReviewer = BaseEndpoint + "/add";
+            public const string UpdateReviewer = BaseEndpoint + "/update" + "/{reviewerId}";
+            public const string DeleteReviewer = BaseEndpoint + "/delete" + "/{reviewerId}";
+            public const string GetReviewsByAReviewer = BaseEndpoint + "{reviewerId}"+" /reviews";
+        }
 
     }
 }

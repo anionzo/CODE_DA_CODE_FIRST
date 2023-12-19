@@ -22,7 +22,6 @@ namespace ANIONZO_API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<CategoryEntity>))]
         [Route(WebApiEndpoint.Category.GetAllCategory)]
         public IActionResult GetAll() {
             var categorys = _mapper.Map<List<CategoryModel>>(_categoryRepository.GetAll());
@@ -33,7 +32,6 @@ namespace ANIONZO_API.Controllers
             return Ok(categorys);
         }
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<PokemonModel>))]
         [Route(WebApiEndpoint.Category.GetCategory)]
         public IActionResult Get(string Id)
         {
@@ -46,8 +44,6 @@ namespace ANIONZO_API.Controllers
             return Ok(category);
         }
         [HttpPost]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
         [Route(WebApiEndpoint.Category.AddCategory)]
 
         public IActionResult Create([FromBody] CategoryModel categoryCreate)
@@ -81,9 +77,6 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
         [Route(WebApiEndpoint.Category.UpdateCategory)]
 
         public IActionResult Update(string Id, [FromBody] CategoryModel updatedCategory)
@@ -112,9 +105,6 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
         [Route(WebApiEndpoint.Category.DeleteCategory)]
         public IActionResult Delete(string Id)
         {

@@ -23,7 +23,6 @@ namespace ANIONZO_API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        //[ProducesResponseType(200, Type = typeof(IEnumerable<OwnerEntity>))]
         [Route(WebApiEndpoint.Owner.GetAllOwner)]
         public IActionResult GetAll()
         {
@@ -35,7 +34,6 @@ namespace ANIONZO_API.Controllers
             return Ok(Owners);
         }
         [HttpGet]
-        //[ProducesResponseType(200, Type = typeof(IEnumerable<PokemonModel>))]
         [Route(WebApiEndpoint.Owner.GetOwner)]
         public IActionResult Get(string Id)
         {
@@ -48,10 +46,7 @@ namespace ANIONZO_API.Controllers
             return Ok(Owner);
         }
         [HttpPost]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(400)]
         [Route(WebApiEndpoint.Owner.AddOwner)]
-
         public IActionResult Create([FromBody] OwnerModel OwnerCreate)
         {
             if (OwnerCreate == null)
@@ -84,11 +79,7 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpPut]
-        //[ProducesResponseType(400)]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(404)]
         [Route(WebApiEndpoint.Owner.UpdateOwner)]
-
         public IActionResult Update(string Id, [FromBody] OwnerModel updatedOwner)
         {
             if (updatedOwner == null)
@@ -114,8 +105,6 @@ namespace ANIONZO_API.Controllers
             return NoContent();
         }
         [HttpGet]
-        //[ProducesResponseType(200, Type = typeof(Owner))]
-        //[ProducesResponseType(400)]
         [Route(WebApiEndpoint.Owner.GetPokemonByOwner)]
 
         public IActionResult GetPokemonByOwner(string ownerId)
@@ -134,9 +123,6 @@ namespace ANIONZO_API.Controllers
             return Ok(owner);
         }
         [HttpDelete]
-        //[ProducesResponseType(200)]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(404)]
         [Route(WebApiEndpoint.Owner.DeleteOwner)]
         public IActionResult Delete(string Id)
         {
