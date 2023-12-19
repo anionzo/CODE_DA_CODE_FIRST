@@ -68,6 +68,15 @@
             public const string DeleteReviewer = BaseEndpoint + "/delete" + "/{reviewerId}";
             public const string GetReviewsByAReviewer = BaseEndpoint + "{reviewerId}"+" /reviews";
         }
+        public static class Account
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/account";
+            public const string GetAccount = BaseEndpoint + "/get-single" + "/{Id}";
+            public const string GetAllAccount = BaseEndpoint + "/get-all";
+            public const string AddAccount = BaseEndpoint + "/add";
+            public const string UpdateAccount = BaseEndpoint + "/update" + "/{Id}";
+            public const string DeleteAccount = BaseEndpoint + "/delete" + "/{Id}";
+        }
 
     }
 }
