@@ -46,6 +46,11 @@ namespace ANIONZO_API.Repository
             return _context.Accounts.Any(x => x.Id == Id);
         }
 
+        public bool Login(AccountModel account)
+        {
+            return _context.Accounts.Any(x => x.Username == account.Username && x.PasswordHash == account.PasswordHash); ;
+        }
+
         public bool Save()
         {
             return _context.SaveChanges() > 0;

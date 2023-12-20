@@ -3,12 +3,14 @@ using ANIONZO_API.Entity;
 using ANIONZO_API.Models;
 using ANIONZO_API.Repository.InterfaceRepository;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static ANIONZO_API.Constants.WebApiEndpoint;
 
 namespace ANIONZO_API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewerController : ControllerBase

@@ -77,6 +77,14 @@
             public const string UpdateAccount = BaseEndpoint + "/update" + "/{Id}";
             public const string DeleteAccount = BaseEndpoint + "/delete" + "/{Id}";
         }
+        public static class Login
+        {
+            private const string BaseEndpoint = "~/" + AreaName + "/login";
+            public const string Authenticate = BaseEndpoint + "/authenticate";
 
+            public const string GetAllLogin = BaseEndpoint + "/get-all";
+            public const string AddLogin = BaseEndpoint + "/add";
+        
+        }
     }
 }

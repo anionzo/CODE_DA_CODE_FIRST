@@ -7,6 +7,7 @@ namespace ANIONZO_API.Repository.InterfaceRepository
     {
         ICollection<AccountEntity> GetAll();
         AccountEntity Get(string Id);
+        bool Login(AccountModel account);
         bool GetTExists(string Id);
         AccountEntity GetAccountTrimToUpper(AccountModel account);
         bool Create(AccountEntity account);
