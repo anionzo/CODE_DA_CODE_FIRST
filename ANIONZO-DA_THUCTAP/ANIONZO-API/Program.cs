@@ -50,9 +50,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
 
     // Thêm thông tin bảo mật để hiển thị ổ khóa
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Login", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme",
+        Description = "Nhập JWT sau khi login được vào đây",
         Type = SecuritySchemeType.Http,
         Scheme = "bearer"
     });
