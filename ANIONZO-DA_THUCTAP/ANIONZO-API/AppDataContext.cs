@@ -10,7 +10,7 @@ namespace ANIONZO_API
         // dotnet ef migrations add Update1 -v --context AppDataContext
         // dotnet ef database update -v --context AppDataContext
         // dotnet ef migrations remove
-        //
+        // dotnet run seeddata
         public AppDataContext(DbContextOptions<AppDataContext> options) : base(options)
         {
         }

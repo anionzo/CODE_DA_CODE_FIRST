@@ -1,6 +1,7 @@
 ﻿using ANIONZO_API.Entity;
 using ANIONZO_API.Models;
 using ANIONZO_API.Repository.InterfaceRepository;
+using ANIONZO_API.Utils;
 
 namespace ANIONZO_API.Repository
 {
@@ -39,7 +40,10 @@ namespace ANIONZO_API.Repository
 
         public bool DeletePokemon(PokemonEntity pokemon)
         {
-            _context.Remove(pokemon);
+            var po = GetID(pokemon.Id);
+            po.DeletedTime = ApiHelper.SystemTimeNow;
+            _context.Update(po);
+            //_context.Remove(pokemon);
             return Save();
         }
 

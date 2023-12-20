@@ -101,7 +101,6 @@ namespace ANIONZO_API.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gym = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AccountID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -110,11 +109,6 @@ namespace ANIONZO_API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Owners", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Owners_Accounts_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Accounts",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Owners_Countries_CategoryID",
                         column: x => x.CategoryID,
@@ -207,11 +201,6 @@ namespace ANIONZO_API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Owners_AccountID",
-                table: "Owners",
-                column: "AccountID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Owners_CategoryID",
                 table: "Owners",
                 column: "CategoryID");
@@ -250,6 +239,9 @@ namespace ANIONZO_API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Accounts");
+
+            migrationBuilder.DropTable(
                 name: "PokemonCategories");
 
             migrationBuilder.DropTable(
@@ -269,9 +261,6 @@ namespace ANIONZO_API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Reviewers");
-
-            migrationBuilder.DropTable(
-                name: "Accounts");
 
             migrationBuilder.DropTable(
                 name: "Countries");

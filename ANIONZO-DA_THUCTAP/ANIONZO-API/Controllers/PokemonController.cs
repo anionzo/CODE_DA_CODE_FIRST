@@ -1,6 +1,7 @@
 ﻿using ANIONZO_API.Constants;
 using ANIONZO_API.Entity;
 using ANIONZO_API.Models;
+using ANIONZO_API.Repository;
 using ANIONZO_API.Repository.InterfaceRepository;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -15,14 +16,16 @@ namespace ANIONZO_API.Controllers
     {
         private readonly IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
+        private readonly IReviewRepository _reviewRepository;
 
-        public PokemonController(IPokemonRepository pokemonRepository, IMapper mapper){
+        public PokemonController(IPokemonRepository pokemonRepository, IMapper mapper, IReviewRepository reviewRepository)
+        {
             _pokemonRepository = pokemonRepository;
             _mapper = mapper;
+            _reviewRepository = reviewRepository;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<PokemonEntity>))]
         [Route(WebApiEndpoint.Pokemon.GetAllPokemon)]
         public IActionResult GetAll()
         {
@@ -36,7 +39,6 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<PokemonModel>))]
         [Route(WebApiEndpoint.Pokemon.GetPokemon)]
         public IActionResult GetPokemon(string Id)
         {
@@ -51,7 +53,6 @@ namespace ANIONZO_API.Controllers
             return Ok(pokemon);
         }
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<decimal>))]
         [Route(WebApiEndpoint.Pokemon.GetRatings)]
         public IActionResult GetRattings(string Id)
         {
@@ -66,9 +67,6 @@ namespace ANIONZO_API.Controllers
             return Ok(rating);
         }
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<PokemonEntity>))]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
         [Route(WebApiEndpoint.Pokemon.AddPokemon)]
         public IActionResult CreatePokemon([FromQuery] string ownerId, [FromQuery] string catId, [FromBody] PokemonModel pokemonCreate)
         {
@@ -96,9 +94,6 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
         [Route(WebApiEndpoint.Pokemon.UpdatePokemon)]
         public IActionResult UpdatePokemon(string Id, string ownerId, string categoryId, [FromBody] PokemonModel updatedPokemon)
         {
@@ -126,9 +121,6 @@ namespace ANIONZO_API.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
         [Route(WebApiEndpoint.Pokemon.DeletePokemon)]
 
         public IActionResult DeletePokemon(string Id)
@@ -138,21 +130,21 @@ namespace ANIONZO_API.Controllers
                 return NotFound();
             }
 
-            //var reviewsToDelete = _reviewRepository.GetReviewsOfAPokemon(pokeId);
-            //var pokemonToDelete = _pokemonRepository.GetPokemon(pokeId);
+            var reviewsToDelete = _reviewRepository.GetReviewsOfAPokemon(Id);
+            var pokemonToDelete = _pokemonRepository.GetID(Id);
 
-            //if (!ModelState.IsValid)
-            //    return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            //if (!_reviewRepository.DeleteReviews(reviewsToDelete.ToList()))
-            //{
-            //    ModelState.AddModelError("", "Something went wrong when deleting reviews");
-            //}
+            if (!_reviewRepository.DeleteList(reviewsToDelete.ToList()))
+            {
+                ModelState.AddModelError("", "Something went wrong when deleting reviews");
+            }
 
-            //if (!_pokemonRepository.DeletePokemon(pokemonToDelete))
-            //{
-            //    ModelState.AddModelError("", "Something went wrong deleting owner");
-            //}
+            if (!_pokemonRepository.DeletePokemon(pokemonToDelete))
+            {
+                ModelState.AddModelError("", "Something went wrong deleting owner");
+            }
 
             return NoContent();
         }

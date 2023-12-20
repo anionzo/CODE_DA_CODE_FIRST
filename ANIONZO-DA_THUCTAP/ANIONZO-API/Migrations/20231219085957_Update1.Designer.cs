@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ANIONZO_API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20231204164704_Update1")]
+    [Migration("20231219085957_Update1")]
     partial class Update1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,9 +107,6 @@ namespace ANIONZO_API.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AccountID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("CategoryID")
                         .HasColumnType("nvarchar(450)");
 
@@ -135,8 +132,6 @@ namespace ANIONZO_API.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountID");
 
                     b.HasIndex("CategoryID");
 
@@ -306,15 +301,9 @@ namespace ANIONZO_API.Migrations
 
             modelBuilder.Entity("ANIONZO_API.Entity.OwnerEntity", b =>
                 {
-                    b.HasOne("ANIONZO_API.Entity.AccountEntity", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountID");
-
                     b.HasOne("ANIONZO_API.Entity.CountryEntity", "Country")
                         .WithMany("Owners")
                         .HasForeignKey("CategoryID");
-
-                    b.Navigation("Account");
 
                     b.Navigation("Country");
                 });

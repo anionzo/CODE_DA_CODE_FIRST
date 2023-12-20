@@ -105,9 +105,6 @@ namespace ANIONZO_API.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AccountID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("CategoryID")
                         .HasColumnType("nvarchar(450)");
 
@@ -133,8 +130,6 @@ namespace ANIONZO_API.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountID");
 
                     b.HasIndex("CategoryID");
 
@@ -304,15 +299,9 @@ namespace ANIONZO_API.Migrations
 
             modelBuilder.Entity("ANIONZO_API.Entity.OwnerEntity", b =>
                 {
-                    b.HasOne("ANIONZO_API.Entity.AccountEntity", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountID");
-
                     b.HasOne("ANIONZO_API.Entity.CountryEntity", "Country")
                         .WithMany("Owners")
                         .HasForeignKey("CategoryID");
-
-                    b.Navigation("Account");
 
                     b.Navigation("Country");
                 });

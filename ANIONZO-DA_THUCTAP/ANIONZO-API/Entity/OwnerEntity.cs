@@ -15,9 +15,9 @@ namespace ANIONZO_API.Entity
 
         public ICollection<PokemonOwnerEntity>? PokemonOwners { get; set; }
 
-        [ForeignKey("Account")]
-        public string? AccountID { get; set; }
-        public AccountEntity? Account { get; set; }
+        //[ForeignKey("Account")]
+        //public string? AccountID { get; set; }
+        //public AccountEntity? Account { get; set; }
     }
 
 }

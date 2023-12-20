@@ -1,5 +1,7 @@
 ﻿using ANIONZO_API.Entity;
 using ANIONZO_API.Repository.InterfaceRepository;
+using ANIONZO_API.Utils;
+using static ANIONZO_API.Constants.WebApiEndpoint;
 
 namespace ANIONZO_API.Repository
 {
@@ -20,6 +22,11 @@ namespace ANIONZO_API.Repository
 
         public bool Delete(CategoryEntity category)
         {
+            //var ca = Get(category.Id);
+
+            //ca.DeletedTime = ApiHelper.SystemTimeNow;
+            //_context.Update(ca);
+
             _context.Remove(category);
             return Save();
             
@@ -33,8 +40,7 @@ namespace ANIONZO_API.Repository
 
         public ICollection<CategoryEntity> GetAll()
         {
-            var categorys = _context.Categorys.Where(cate => cate != null).ToList();
-            return categorys;
+           return _context.Categorys.OrderBy(cate => cate.Id).ToList();
         }
 
         public ICollection<PokemonEntity> GetPokemonByCategory(string categoryId)
