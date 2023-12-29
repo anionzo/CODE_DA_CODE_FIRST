@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ANIONZO_API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20231219085957_Update1")]
+    [Migration("20231227081037_Update1")]
     partial class Update1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
